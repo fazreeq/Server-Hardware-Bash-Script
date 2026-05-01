@@ -1,0 +1,16 @@
+#!/bin/bash
+
+echo "[+] Checking InfiniBand status..."
+
+# List IB devices
+for dev in $(ls /sys/class/infiniband); do
+  echo "-----------------------------"
+  echo "Device: $dev"
+  
+  # Check port state
+  ibstat $dev | grep -E "State|Physical state|Rate"
+
+done
+
+echo "-----------------------------"
+echo "[+] Done"
