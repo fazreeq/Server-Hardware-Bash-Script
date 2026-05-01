@@ -26,3 +26,24 @@ ipmitool -I lanplus -H $BMC_IP -U $USER -P $PASS sel list | tail -5
 
 echo "-----------------------------"
 echo "[+] Done"
+
+
+
+
+
+#RESULTS
+#===== IPMI HEALTH CHECK =====
+#BMC: 192.168.1.100
+#-----------------------------
+#[+] Power Status:
+#Chassis Power is on
+
+#[+] Sensors (Temp & Fan):
+#CPU1 Temp      | 42 degrees C | ok
+#CPU2 Temp      | 45 degrees C | ok
+#Fan1           | 12000 RPM    | ok
+
+#[+] Recent Events:
+#No entries
+#-----------------------------
+#[+] Done
