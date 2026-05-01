@@ -1,0 +1,28 @@
+#!/bin/bash
+
+BMC_IP="192.168.1.100"
+USER="root"
+PASS="0penBmc"
+
+echo "===== IPMI HEALTH CHECK ====="
+echo "BMC: $BMC_IP"
+echo "-----------------------------"
+
+# Power status
+echo "[+] Power Status:"
+ipmitool -I lanplus -H $BMC_IP -U $USER -P $PASS power status
+
+echo ""
+
+# Sensor data (temp & fan only)
+echo "[+] Sensors (Temp & Fan):"
+ipmitool -I lanplus -H $BMC_IP -U $USER -P $PASS sdr list | grep -i -E "temp|fan"
+
+echo ""
+
+# Last 5 system events
+echo "[+] Recent Events:"
+ipmitool -I lanplus -H $BMC_IP -U $USER -P $PASS sel list | tail -5
+
+echo "-----------------------------"
+echo "[+] Done"
